@@ -1,0 +1,39 @@
+﻿        #region [Global 全局缓存]  [单项值缓存名称列表] | [命名规则 Cache + 属性名]
+
+        /// <summary>
+        /// 站点基本信息的全局缓存名称
+        /// </summary>
+        public const string CACHE_WEB_RUDDER = "WebRudderInfo";
+        /// <summary>
+        /// WebRudderInfo 站点基本信息 (24*60 - 10)*60*1000 毫秒 更新一次
+        /// </summary>
+        public static WebRudderInfo WebRudder
+        {
+            get
+            {
+                var icv = GlobalCache.Instance.GetCache(CACHE_WEB_RUDDER);
+
+                if (icv == null)
+                {
+                    CachePolicy cp = new CachePolicy
+                    {
+                        UpdateFrequency = 0,
+                        CacheMethod = CacheMethod.Auto,
+                        ExpiredTime = 0
+                    };
+
+                    icv = new CacheValue(null, cp);
+
+                    icv.UpdateCache += delegate(object sender, EventArgs e)
+                    {
+                        var ii = sender as ICacheValue;
+                        if (ii != null) ii.Value = new WebRudder().GetWebRudder();
+                    };
+                    icv.Update();
+
+                    GlobalCache.Instance.AddCache(CACHE_WEB_RUDDER, icv);
+                }
+
+                return GlobalCache.Instance.GetValue<WebRudderInfo>(CACHE_WEB_RUDDER);
+            }
+        }
