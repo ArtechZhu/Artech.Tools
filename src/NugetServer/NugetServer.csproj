@@ -119,6 +119,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <None Include="README.md" />
     <Content Include="Packages\Readme.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
