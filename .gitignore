@@ -1,3 +1,8 @@
 /src/Artech.Cache/bin
 /src/Artech.Cache/obj
 /src/.vs
+packages/
+bin/
+obj/
+Properties/
+*.csproj.user
