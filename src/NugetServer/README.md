@@ -8,4 +8,4 @@
 - <add key="packagesPath" value="~/NugetPackages" />
 
 # 制作、上传包：
-博文：https://blog.zhuliang.ltd/uncategorized/manage-nuget-packages/
+博文：[https://blog.zhuliang.ltd/2018/12/frontend/manage-nuget-packages.html](https://blog.zhuliang.ltd/2018/12/frontend/manage-nuget-packages.html)
